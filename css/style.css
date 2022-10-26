@@ -1,0 +1,99 @@
+/*
+Developed by Aditya Suryana
+github.com/adityasuryana
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+    pointer-events: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input, select {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #F1F1F1;
+  color: black;
+  border: none;
+  border-radius: 10px;
+}
+
+.header-title {
+  color: black;
+  margin-top: 0px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-group {
+  display: grid;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.form-row button {
+  padding: 8px 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+.card-container {
+  max-width: 650px;
+  min-width: 400px;
+  padding: 45px;
+  background-color: white;
+}
+
+.icon {
+  font-size: 28px;
+}
+
+.card-custom {
+  border: 2px solid black;
+  border-radius: 10px!important;
+}
+
+.card-custom:hover {
+  border: none;
+  background-color: black;
+}
+
+.card-btn {
+  font-size: 18px;
+  text-align: center;
+  color: black;
+  padding: 18px;
+}
+
+.card-btn:hover {
+  color: white;
+}
+
+.name-btn {
+  margin-bottom: 0;
+}
+
+.form-btn {
+  background-color: black!important;
+  color: white;
+}
