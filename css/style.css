@@ -32,6 +32,10 @@ input, select {
   border-radius: 10px;
 }
 
+.fs-20 {
+  font-size: 20px !important;
+}
+
 .header-title {
   color: black;
   margin-top: 0px;
