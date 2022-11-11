@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 05:55 PM
+-- Generation Time: Nov 11, 2022 at 02:08 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,6 +20,68 @@ SET time_zone = "+00:00";
 --
 -- Database: `fuzzy_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penjualan`
+--
+
+CREATE TABLE `penjualan` (
+  `id` int(11) NOT NULL,
+  `nama_pemesan` varchar(255) NOT NULL,
+  `produk` varchar(255) NOT NULL,
+  `jumlah` int(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penjualan`
+--
+
+INSERT INTO `penjualan` (`id`, `nama_pemesan`, `produk`, `jumlah`) VALUES
+(1, 'Adit', 'Kentang', 200),
+(2, 'Joko', 'Kentang', 200);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permintaan`
+--
+
+CREATE TABLE `permintaan` (
+  `id` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `nama_pemesan` varchar(255) NOT NULL,
+  `produk` varchar(255) NOT NULL,
+  `jumlah` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `permintaan`
+--
+
+INSERT INTO `permintaan` (`id`, `tanggal`, `nama_pemesan`, `produk`, `jumlah`) VALUES
+(1, '2022-11-11', 'Aditya Suryana', 'Kentang', 200),
+(2, '2022-11-12', 'Eka', 'Kentang rebus', 100);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk`
+--
+
+CREATE TABLE `produk` (
+  `id` int(11) NOT NULL,
+  `nama_barang` varchar(255) NOT NULL,
+  `quantity` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `nama_barang`, `quantity`) VALUES
+(1, 'Kentang', 20000);
 
 -- --------------------------------------------------------
 
@@ -48,6 +110,24 @@ INSERT INTO `user` (`id`, `name`, `username`, `password`, `level`) VALUES
 --
 
 --
+-- Indexes for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `permintaan`
+--
+ALTER TABLE `permintaan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -56,6 +136,24 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `penjualan`
+--
+ALTER TABLE `penjualan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `permintaan`
+--
+ALTER TABLE `permintaan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
