@@ -23,7 +23,7 @@
                <?php
                 	if(isset($_GET['message'])){
                 		if($_GET['message']=="failed"){
-                			echo "<div class='alert alert-danger alert-dismissible fade show mb-4'>Username or Password incorrect!
+                			echo "<div class='alert alert-danger alert-dismissible fade show mb-4 border-0'>Username or Password incorrect!
                               <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                             </div>";
                 		}
@@ -58,4 +58,5 @@
 <!--
 Developed by Aditya Suryana
 github.com/adityasuryana
+2022
 -->
