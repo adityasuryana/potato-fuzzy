@@ -50,12 +50,11 @@ if (!isset($_SESSION['level'])){
            <p class="mb-1">Halo, <?php echo $_SESSION['name']; ?>!</p>
            <h2 class="title"><strong>Dashboard Admin</strong></h2>
            <div class="dark-blue round-1 mt-4">
-             <div class="container p-2 px-3">
+             <div class="container p-2">
                <div class="row">
-                 <div class="col-xxl-3 col-xl-3 col-lg-2 d-sm-none d-md-none d-lg-block"></div>
 
                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
-                   <a href="#">
+                   <a href="data-permintaan.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-hand-holding mb-2"></i>
@@ -66,17 +65,48 @@ if (!isset($_SESSION['level'])){
                  </div>
 
                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
-                   <a href="data.php">
+                   <a href="data-produk.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-circle-plus mb-2"></i>
-                         <p class="name-btn">Kelola Data</p>
+                         <p class="name-btn">Data Produk</p>
                        </div>
                      </div>
                    </a>
                  </div>
 
-                 <div class="col-xxl-3 col-xl-3 col-lg-2 d-sm-none d-md-none d-lg-block"></div>
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
+                   <a href="data-penjualan.php">
+                     <div class="card card-custom h-100">
+                       <div class="card-btn my-auto">
+                         <i class="icon fa-solid fa-receipt mb-2"></i>
+                         <p class="name-btn">Data Penjualan</p>
+                       </div>
+                     </div>
+                   </a>
+                 </div>
+
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
+                   <a href="laporan.php">
+                     <div class="card card-custom h-100">
+                       <div class="card-btn my-auto">
+                         <i class="icon fa-solid fa-file-invoice mb-2"></i>
+                         <p class="name-btn">Laporan</p>
+                       </div>
+                     </div>
+                   </a>
+                 </div>
+
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
+                   <a href="#">
+                     <div class="card card-custom h-100">
+                       <div class="card-btn my-auto">
+                         <i class="icon fa-solid fa-calculator mb-2"></i>
+                         <p class="name-btn">Hitung Logika Fuzzy</p>
+                       </div>
+                     </div>
+                   </a>
+                 </div>
                </div>
              </div>
            </div>
@@ -92,4 +122,5 @@ if (!isset($_SESSION['level'])){
 <!--
 Developed by Aditya Suryana
 github.com/adityasuryana
+2022
 -->
