@@ -62,7 +62,7 @@ if($_SESSION['status']!="loggedin"){
                     <tr>
                       <td><?php echo $data['bulan']; ?></td>
     									<td><?php echo $data['tahun']; ?></td>
-    									<td><?php echo $data['prediksi']; ?></td>
+    									<td><?php echo $data['prediksi']; ?> kg</td>
     								</tr>
                     <?php } ?>
      						</tbody>
