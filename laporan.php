@@ -20,7 +20,7 @@ if($_SESSION['status']!="loggedin"){
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">kentang.</p>
+         <p class="navbar-brand mx-auto mb-0">Halo, <?php echo $_SESSION['name']; ?>!</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -38,6 +38,9 @@ if($_SESSION['status']!="loggedin"){
      <div class="container">
        <div class="row">
          <div class="col-12 mt-4">
+           <div class="w-100 mb-4">
+             <img class="img-fluid rounded-3" src="img/header1.jpg" alt="" style="max-height: 250px; width: inherit;">
+           </div>
            <div class="d-flex">
              <a href="owner.php" class="my-auto text-dark"><i class="fa-solid fa-arrow-left fs-20 me-3"></i></a>
              <h2 class="title"><strong>Laporan</strong></h2>
@@ -47,11 +50,11 @@ if($_SESSION['status']!="loggedin"){
                <div class="row">
 
                  <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
-                   <a href="laporan-penjualan.php">
+                   <a href="laporan-persediaan.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-file-invoice mb-2"></i>
-                         <p class="name-btn">Laporan Data Penjualan</p>
+                         <p class="name-btn">Laporan Data Persediaan</p>
                        </div>
                      </div>
                    </a>
@@ -63,6 +66,17 @@ if($_SESSION['status']!="loggedin"){
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-calculator mb-2"></i>
                          <p class="name-btn">Laporan Data Permintaan</p>
+                       </div>
+                     </div>
+                   </a>
+                 </div>
+
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
+                   <a href="laporan-fuzzy.php">
+                     <div class="card card-custom h-100">
+                       <div class="card-btn my-auto">
+                         <i class="icon fa-solid fa-calculator mb-2"></i>
+                         <p class="name-btn">Laporan Prediksi</p>
                        </div>
                      </div>
                    </a>

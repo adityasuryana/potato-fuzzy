@@ -26,7 +26,7 @@ if($_SESSION['status']!="loggedin"){
   	?>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">kentang.</p>
+         <p class="navbar-brand mx-auto mb-0">CV. Satria Piningit</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -44,19 +44,20 @@ if($_SESSION['status']!="loggedin"){
 
          <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-12">
            <div class="d-flex">
-             <a href="owner.php" class="my-auto text-dark"><i class="fa-solid fa-arrow-left fs-20 me-3"></i></a>
+             <a href="laporan.php" class="my-auto text-dark"><i class="fa-solid fa-arrow-left fs-20 me-3"></i></a>
              <h2 class="header-title mt-4 mb-4">Laporan Data Permintaan</h2>
            </div>
-           
+
            <div class="table-data">
      				<div class="order">
      					<table id="table">
      						<thead>
      							<tr>
      								<th>ID</th>
-     								<th>Tanggal Pemesan</th>
+     								<th>Bulan</th>
+                    <th>Tahun</th>
      								<th>Nama Pemesan</th>
-                    <th>Barang</th>
+                    <th>Ukuran</th>
                     <th>Quantity</th>
      							</tr>
      						</thead>
@@ -64,10 +65,11 @@ if($_SESSION['status']!="loggedin"){
                   <?php while($permintaan = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                       <td><?php echo $permintaan['id']; ?></td>
-                      <td><?php echo date('d F Y',strtotime($permintaan['tanggal'])); ?></td>
+                      <td><?php echo $permintaan['bulan']; ?></td>
+                      <td><?php echo $permintaan['tahun']; ?></td>
     									<td><?php echo $permintaan['nama_pemesan']; ?></td>
     									<td><?php echo $permintaan['produk']; ?></td>
-    									<td><?php echo $permintaan['jumlah']; ?></td>
+    									<td><?php echo $permintaan['jumlah']; ?> kg</td>
     								</tr>
                     <?php } ?>
      						</tbody>
@@ -82,6 +84,7 @@ if($_SESSION['status']!="loggedin"){
     <script type="text/javascript">
   			$(document).ready( function () {
   			$('#table').DataTable({
+          "bFilter" : false,
           dom: 'Bfrtip',
           buttons: [
             'print'

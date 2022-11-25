@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kentang.</title>
+    <title>CV. Satria Piningit</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <a class="navbar-brand mx-auto" href="index.php">kentang.</a>
+         <a class="navbar-brand mx-auto" href="index.php">CV. Satria Piningit</a>
        </div>
      </nav>
 

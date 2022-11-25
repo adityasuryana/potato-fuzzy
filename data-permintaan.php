@@ -28,7 +28,7 @@ if (!isset($_SESSION['level'])){
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">kentang.</p>
+         <p class="navbar-brand mx-auto mb-0">CV. Satria Piningit</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -48,10 +48,37 @@ if (!isset($_SESSION['level'])){
 
          <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-12">
            <form method="POST" class="" action="process/insert_permintaan.php">
-               <div class="form-group">
-                 <label for="">Tanggal</label>
-                 <input id="" name="tanggal" class="w-100" type="date">
-               </div>
+
+             <div class="form-group">
+               <label for="">Bulan</label>
+               <select class="" name="bulan">
+                 <option value="">Pilih Bulan</option>
+                 <option value="Januari">Januari</option>
+                 <option value="Februari">Februari</option>
+                 <option value="Maret">Maret</option>
+                 <option value="April">April</option>
+                 <option value="Mei">Mei</option>
+                 <option value="Juni">Juni</option>
+                 <option value="Juli">Juli</option>
+                 <option value="Agustus">Agustus</option>
+                 <option value="September">September</option>
+                 <option value="Oktober">Oktober</option>
+                 <option value="November">November</option>
+                 <option value="Desember">Desember</option>
+               </select>
+             </div>
+
+             <div class="form-group">
+               <label for="">Tahun</label>
+               <select class="" name="tahun">
+                 <option value="">Pilih Tahun</option>
+                 <option value="2020">2020</option>
+                 <option value="2021">2021</option>
+                 <option value="2022">2022</option>
+                 <option value="2023">2023</option>
+                 <option value="2024">2024</option>
+               </select>
+             </div>
 
                <div class="form-group">
                  <label for="">Nama Pemesan</label>
@@ -59,13 +86,21 @@ if (!isset($_SESSION['level'])){
                </div>
 
                <div class="form-group">
-                 <label for="">Produk Yang Dipesan</label>
-                 <input id="" name="produk" class="w-100" type="text">
+                 <label for="">Ukuran Kentang</label>
+                 <select class="" name="produk">
+                   <option value="">Pilih Ukuran</option>
+                   <option value="kecil">Kecil</option>
+                   <option value="besar">Besar</option>
+                 </select>
                </div>
 
                <div class="form-group">
                  <label for="">Jumlah</label>
-                 <input id="" name="jumlah" class="w-100" type="number">
+                 <div class="d-flex">
+                   <input id="" name="jumlah" class="w-100" type="number">
+                   <p class="p-3 mx-auto my-auto">kg</p>
+                 </div>
+
                </div>
 
                <div class="form-row mt-5">

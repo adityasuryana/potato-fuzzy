@@ -29,7 +29,7 @@ if (!isset($_SESSION['level'])){
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">kentang.</p>
+         <p class="navbar-brand mx-auto mb-0">Halo, <?php echo $_SESSION['name']; ?>!</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -40,6 +40,7 @@ if (!isset($_SESSION['level'])){
          </div>
        </div>
      </nav>
+
      <?php
        include 'connection.php';
        $user = mysqli_query($conn,"select * from user");
@@ -47,13 +48,16 @@ if (!isset($_SESSION['level'])){
      <div class="container">
        <div class="row">
          <div class="col-12 mt-4">
-           <p class="mb-1">Halo, <?php echo $_SESSION['name']; ?>!</p>
+           <div class="w-100 mb-4">
+             <img class="img-fluid rounded-3" src="img/header1.jpg" alt="" style="max-height: 250px; width: inherit;">
+           </div>
+
            <h2 class="title"><strong>Dashboard Admin</strong></h2>
            <div class="dark-blue round-1 mt-4">
              <div class="container p-2">
                <div class="row">
 
-                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 p-2">
                    <a href="data-permintaan.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
@@ -64,29 +68,31 @@ if (!isset($_SESSION['level'])){
                    </a>
                  </div>
 
-                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
-                   <a href="data-produk.php">
+
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 p-2">
+                   <a href="data-produksi.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-circle-plus mb-2"></i>
-                         <p class="name-btn">Data Produk</p>
+                         <p class="name-btn">Data Produksi</p>
                        </div>
                      </div>
                    </a>
                  </div>
 
-                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
-                   <a href="data-penjualan.php">
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 p-2">
+                   <a href="data-persediaan.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-receipt mb-2"></i>
-                         <p class="name-btn">Data Penjualan</p>
+                         <p class="name-btn">Data Persediaan</p>
                        </div>
                      </div>
                    </a>
                  </div>
 
-                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
+
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 p-2">
                    <a href="laporan.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
@@ -97,8 +103,8 @@ if (!isset($_SESSION['level'])){
                    </a>
                  </div>
 
-                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-6 p-2">
-                   <a href="#">
+                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 p-2">
+                   <a href="hitung-fuzzy.php">
                      <div class="card card-custom h-100">
                        <div class="card-btn my-auto">
                          <i class="icon fa-solid fa-calculator mb-2"></i>
