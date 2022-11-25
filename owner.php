@@ -49,7 +49,7 @@ if (isset($_SESSION['level'])){
           <div class="w-100 mb-4">
             <img class="img-fluid rounded-3" src="img/header1.jpg" alt="" style="max-height: 250px; width: inherit;">
           </div>
-          
+
            <h2 class="title"><strong>Dashboard Owner</strong></h2>
            <div class="dark-blue round-1 mt-4">
              <div class="container p-2">
@@ -87,9 +87,3 @@ if (isset($_SESSION['level'])){
     <script src="js/bootstrap.js" charset="utf-8"></script>
   </body>
 </html>
-
-<!--
-Developed by Aditya Suryana
-github.com/adityasuryana
-2022
--->
