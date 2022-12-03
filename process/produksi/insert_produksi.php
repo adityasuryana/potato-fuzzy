@@ -1,5 +1,5 @@
 <?php
-    require_once('../connection.php');
+    require_once('../../connection.php');
 
     $bulan = $_POST['bulan'];
     $tahun = $_POST['tahun'];
@@ -10,7 +10,7 @@
     $result = $conn->query($sql);
 
     if ($result) {
-        header("location:../data-produksi.php");
+        header("location:../../data-produksi.php");
     }
     else{
         echo "Failed". mysqli_error($conn);
