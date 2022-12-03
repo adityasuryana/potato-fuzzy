@@ -15,11 +15,14 @@
        </div>
      </nav>
 
-     <div class="container mt-5">
+     <div class="container mt-3">
        <div class="row">
          <div class="col">
+           <div class="w-100">
+             <img class="img-fluid rounded-3" src="img/header1.jpg" alt="" style="max-height: 210px; width: inherit;">
+           </div>
            <div class="position-absolute top-50 start-50 translate-middle">
-             <div class="card-container">
+             <div class="card-container rounded-3">
                <?php
                 	if(isset($_GET['message'])){
                 		if($_GET['message']=="failed"){

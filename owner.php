@@ -28,7 +28,7 @@ if (isset($_SESSION['level'])){
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">Halo, <?php echo $_SESSION['name']; ?>!</p>
+         <p class="navbar-brand mb-0">Halo, <?php echo $_SESSION['name']; ?>!</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>

@@ -28,7 +28,7 @@ if (!isset($_SESSION['level'])){
 
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">CV. Satria Piningit</p>
+         <p class="navbar-brand mb-0">CV. Satria Piningit</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -85,7 +85,7 @@ if (!isset($_SESSION['level'])){
              </div>
            </form>
 
-           <form action="process/insert_prediksi.php" method="post">
+           <form action="process/prediksi/insert_prediksi.php" method="post">
              <table id="table" class="mt-4">
                <thead>
                  <tr>

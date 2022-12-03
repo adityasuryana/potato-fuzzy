@@ -27,6 +27,13 @@ input, select {
   border-radius: 10px;
 }
 
+@media print {
+  td a.btn .btn-edit {
+    display: hidden!important;
+  }
+
+}
+
 .fs-20 {
   font-size: 20px !important;
 }

@@ -26,7 +26,7 @@ if($_SESSION['status']!="loggedin"){
   	?>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">kentang.</p>
+         <p class="navbar-brand mb-0">kentang.</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -80,7 +80,7 @@ if($_SESSION['status']!="loggedin"){
               ?>
 
      				<div class="order">
-              <form class="" action="process/insert_hasilPrediksi.php" method="post">
+              <form class="" action="process/laporanPrediksi/insert_hasilPrediksi.php" method="post">
                 <table id="table">
        						<thead>
        							<tr>

@@ -28,7 +28,7 @@ if (!isset($_SESSION['level'])){
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mx-auto mb-0">CV. Satria Piningit</p>
+         <p class="navbar-brand mb-0">CV. Satria Piningit</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['level'])){
          <div class="col-xxl-2 col-xl-2 col-lg-2 d-sm-none d-md-none d-lg-block"></div>
 
          <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-12">
-           <form method="POST" class="" action="process/insert_permintaan.php">
+           <form method="POST" class="" action="process/permintaan/insert_permintaan.php">
 
              <div class="form-group">
                <label for="">Bulan</label>
@@ -104,7 +104,7 @@ if (!isset($_SESSION['level'])){
                </div>
 
                <div class="form-row mt-5">
-                 <a href="admin.php" class="text-danger p-2 me-3">Batal</a>
+                 <a href="admin.php" class="text-danger p-2 me-3">Kembali</a>
                  <button class="green" type="submit">Simpan</button>
                </div>
            </form>
