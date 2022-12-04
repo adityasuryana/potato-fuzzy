@@ -1,8 +1,6 @@
 <?php
     require_once('../../connection.php');
 
-    $bulan = $_POST['bulan'];
-    $tahun = $_POST['tahun'];
     $sediaMax = $_POST['sediaMax'];
     $sediaMin = $_POST['sediaMin'];
     $mintaMax = $_POST['mintaMax'];
@@ -13,7 +11,7 @@
     $sediaSkr = $_POST['sediaSkr'];
 
 
-    $sql = "INSERT INTO prediksi(bulan, tahun, sediaMax, sediaMin, mintaMax, mintaMin, prodMax, prodMin, mintaSkr, sediaSkr) VALUES ('$bulan', '$tahun', '$sediaMax', '$sediaMin', '$mintaMax','$mintaMin','$prodMax','$prodMin','$mintaSkr','$sediaSkr')";
+    $sql = "INSERT INTO prediksi(sediaMax, sediaMin, mintaMax, mintaMin, prodMax, prodMin, mintaSkr, sediaSkr) VALUES ('$sediaMax', '$sediaMin', '$mintaMax','$mintaMin','$prodMax','$prodMin','$mintaSkr','$sediaSkr')";
     $result = $conn->query($sql);
 
     if ($result) {

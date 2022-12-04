@@ -42,48 +42,12 @@ if (!isset($_SESSION['level'])){
 
      <div class="container">
        <div class="row">
-         <div class="col-xxl-2 col-xl-2 col-lg-2 d-sm-none d-md-none d-lg-block"></div>
 
-         <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12 col-12">
+         <div class="col-12">
            <div class="d-flex mt-4">
              <a href="owner.php" class="my-auto text-dark"><i class="fa-solid fa-arrow-left fs-20 me-3"></i></a>
              <h2 class="header-title">Prediksi</h2>
            </div>
-
-           <form method="GET" class="mb-4">
-             <div class="form-group">
-               <label for="">Filter Bulan & Tahun</label>
-               <div class="d-flex">
-                   <select class="" name="bulan">
-                     <option value="">Pilih Bulan</option>
-                     <option value="Januari">Januari</option>
-                     <option value="Februari">Februari</option>
-                     <option value="Maret">Maret</option>
-                     <option value="April">April</option>
-                     <option value="Mei">Mei</option>
-                     <option value="Juni">Juni</option>
-                     <option value="Juli">Juli</option>
-                     <option value="Agustus">Agustus</option>
-                     <option value="September">September</option>
-                     <option value="Oktober">Oktober</option>
-                     <option value="November">November</option>
-                     <option value="Desember">Desember</option>
-                   </select>
-
-                   <select class="ms-3" name="tahun">
-                     <option value="">Pilih Tahun</option>
-                     <option value="2020">2020</option>
-                     <option value="2021">2021</option>
-                     <option value="2022">2022</option>
-                     <option value="2023">2023</option>
-                     <option value="2024">2024</option>
-                   </select>
-
-                 <input class="ms-3" type="submit" value="filter">
-                 <a class="text-danger mt-2 p-3" href="hitung-fuzzy.php">reset</a>
-               </div>
-             </div>
-           </form>
 
            <form action="process/prediksi/insert_prediksi.php" method="post">
              <table id="table" class="mt-4">
@@ -97,91 +61,51 @@ if (!isset($_SESSION['level'])){
 
                <tbody>
                    <?php
-                   $no = 1;
-
-                   if (isset($_GET['bulan']) && isset($_GET['tahun'])) {
-                     $bulan = $_GET['bulan'];
-                     $tahun = $_GET['tahun'];
-                     $sedia = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from persediaan where bulan='$bulan' and tahun='$tahun'");
-
-                   } else {
-                     $sedia = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from persediaan");
-
-                   }
-
-                   $data_sedia = mysqli_fetch_array($sedia)
+                      $no = 1;
+                      $sedia = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from persediaan");
+                      $data_sedia = mysqli_fetch_array($sedia)
                     ?>
                   <tr>
                    <th>Persediaan</th>
-
                    <td class="text-end"><input class="text-end" type="number" name="sediaMax" value="<?php echo $data_sedia["max_jumlah"]; ?>" > kg</td>
                    <td class="text-end"><input class="text-end" type="number" name="sediaMin" value="<?php echo $data_sedia["min_jumlah"]; ?>" > kg</td>
                  </tr>
 
 
-                 <tr>
                    <?php
-                   $no = 1;
-
-                   if (isset($_GET['bulan']) && isset($_GET['tahun'])) {
-                     $bulan = $_GET['bulan'];
-                     $tahun = $_GET['tahun'];
-                     $minta = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from permintaan where bulan='$bulan' and tahun='$tahun'");
-
-                   } else {
-                     $minta = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from permintaan");
-
-                   }
-
-                   $data_minta = mysqli_fetch_array($minta)
+                      $no = 1;
+                      $minta = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from permintaan");
+                      $data_minta = mysqli_fetch_array($minta)
                     ?>
+                  <tr>
                    <th>Permintaan</th>
-                   <td class="text-end"><input class="text-end" type="number" name="mintaMax" value="<?php echo $data_minta["max_jumlah"] ?>" > kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="mintaMin" value="<?php echo $data_minta["min_jumlah"] ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="mintaMax" value="<?php echo $data_minta["max_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="mintaMin" value="<?php echo $data_minta["min_jumlah"]; ?>" > kg</td>
                  </tr>
 
                  <tr>
                    <?php
-                   $no = 1;
-
-                   if (isset($_GET['bulan']) && isset($_GET['tahun'])) {
-                     $bulan = $_GET['bulan'];
-                     $tahun = $_GET['tahun'];
-                     $produksi = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from produksi where bulan='$bulan' and tahun='$tahun'");
-
-                   } else {
-                     $produksi = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from produksi");
-
-                   }
-
-                   $data_produksi = mysqli_fetch_array($produksi)
+                      $no = 1;
+                      $produksi = mysqli_query($conn, "select MAX(jumlah) as max_jumlah, MIN(jumlah) as min_jumlah from produksi");
+                      $data_produksi = mysqli_fetch_array($produksi)
                     ?>
                    <th>Produksi</th>
-                   <td class="text-end"><input class="text-end" type="number" name="prodMax" value="<?php echo $data_produksi["max_jumlah"] ?>" > kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="prodMin" value="<?php echo $data_produksi["min_jumlah"] ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="prodMax" value="<?php echo $data_produksi["max_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="prodMin" value="<?php echo $data_produksi["min_jumlah"]; ?>" > kg</td>
 
                  </tr>
+
                  <tr>
                    <td colspan="3"><hr></td>
                  </tr>
 
                  <tr>
-                   <th>Bulan</th>
-                   <td class="text-end"><input type="text" name="bulan" value="<?php echo $bulan ?>" placeholder="Bulan"></td>
-                 </tr>
-
-                 <tr>
-                   <th>Tahun</th>
-                   <td class="text-end"><input type="text" name="tahun" value="<?php echo $tahun ?>" placeholder="Tahun"></td>
-                 </tr>
-
-                 <tr>
-                   <th><label for="">Permintaan bulan ini</label></th>
+                   <th><label for="">Permintaan semester ini</label></th>
                    <td class="text-end"><input class="text-end" type="number" name="mintaSkr"> kg</td>
                  </tr>
 
                  <tr>
-                   <th><label for="">Persediaan bulan ini</label></th>
+                   <th><label for="">Persediaan semester ini</label></th>
                    <td class="text-end"><input class="text-end" type="number" name="sediaSkr"> kg</td>
                  </tr>
 

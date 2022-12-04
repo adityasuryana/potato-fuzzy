@@ -50,34 +50,17 @@ if (!isset($_SESSION['level'])){
            <form method="POST" action="process/persediaan/insert_persediaan.php" class="">
 
              <div class="form-group">
-               <label for="">Bulan</label>
-               <select class="" name="bulan">
-                 <option value="">Pilih Bulan</option>
-                 <option value="Januari">Januari</option>
-                 <option value="Februari">Februari</option>
-                 <option value="Maret">Maret</option>
-                 <option value="April">April</option>
-                 <option value="Mei">Mei</option>
-                 <option value="Juni">Juni</option>
-                 <option value="Juli">Juli</option>
-                 <option value="Agustus">Agustus</option>
-                 <option value="September">September</option>
-                 <option value="Oktober">Oktober</option>
-                 <option value="November">November</option>
-                 <option value="Desember">Desember</option>
+               <label for="">Semester</label>
+               <select class="" name="semester">
+                 <option value="">Pilih Semester</option>
+                 <option value="1">1</option>
+                 <option value="2">2</option>
                </select>
              </div>
 
              <div class="form-group">
                <label for="">Tahun</label>
-               <select class="" name="tahun">
-                 <option value="">Pilih Tahun</option>
-                 <option value="2020">2020</option>
-                 <option value="2021">2021</option>
-                 <option value="2022">2022</option>
-                 <option value="2023">2023</option>
-                 <option value="2024">2024</option>
-               </select>
+               <input id="" name="tahun" class="w-100" type="number">
              </div>
 
                <div class="form-group">

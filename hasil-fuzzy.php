@@ -26,7 +26,7 @@ if($_SESSION['status']!="loggedin"){
   	?>
     <nav class="navbar navbar-expand-lg navbar-light">
        <div class="container">
-         <p class="navbar-brand mb-0">kentang.</p>
+         <p class="navbar-brand mb-0">CV. Satria Piningit</p>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
@@ -49,14 +49,11 @@ if($_SESSION['status']!="loggedin"){
            </div>
 
            <?php
-
-           $data_prediksi = mysqli_fetch_array($result)
-
+              $data_prediksi = mysqli_fetch_array($result)
             ?>
 
            <div class="table-data">
              <?php
-
                $permintaanTurun = ($data_prediksi["mintaMax"] - $data_prediksi["mintaSkr"])/($data_prediksi["mintaMax"] - $data_prediksi["mintaMin"]);
                $permintaanNaik = ($data_prediksi["mintaSkr"] - $data_prediksi["mintaMin"])/($data_prediksi["mintaMax"] - $data_prediksi["mintaMin"]);
                $persediaanSedikit = ($data_prediksi["sediaMax"] - $data_prediksi["sediaSkr"])/($data_prediksi["sediaMax"] - $data_prediksi["sediaMin"]);
@@ -84,16 +81,12 @@ if($_SESSION['status']!="loggedin"){
                 <table id="table">
        						<thead>
        							<tr>
-                      <th>Bulan</th>
-                      <th>Tahun</th>
                       <th>Prediksi</th>
        							</tr>
        						</thead>
        						<tbody>
                       <tr>
-                        <td><input type="text" name="bulan" value="<?php echo $data_prediksi["bulan"]; ?>"></td>
-                        <td><input type="text" name="tahun" value="<?php echo $data_prediksi["tahun"]; ?>"></td>
-      									<td><input type="text" name="prediksi" value="<?php echo floor($zhasil); ?>"> kg</td>
+      									<td><input type="text" name="prediksi" value="<?php echo round($zhasil); ?>"> kg</td>
       								</tr>
        						</tbody>
        					</table>

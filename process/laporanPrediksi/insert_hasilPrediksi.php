@@ -1,11 +1,11 @@
 <?php
     require_once('../../connection.php');
 
-    $bulan = $_POST['bulan'];
+    $semester = $_POST['semester'];
     $tahun = $_POST['tahun'];
     $prediksi = $_POST['prediksi'];
 
-    $sql = "INSERT INTO laporanPrediksi(bulan, tahun, prediksi) VALUES ('$bulan', '$tahun','$prediksi')";
+    $sql = "INSERT INTO laporanPrediksi(semester, tahun, prediksi) VALUES ('$semester', '$tahun','$prediksi')";
     $result = $conn->query($sql);
 
     if ($result) {

@@ -34,9 +34,7 @@
               	?>
                <form action="login_controller.php" method="post">
                  <h3><strong>Login</strong></h3>
-                 <p>This is a secure system and you will need to provide
-                 your login details to access.
-                 </p>
+                 <p></p>
 
                  <div class="mt-4">
                    <input class="w-100" type="text" name="username" placeholder="username" required>

@@ -1,14 +1,14 @@
 <?php
     require_once('../../connection.php');
 
-    $bulan = $_POST['bulan'];
+    $semester = $_POST['semester'];
     $tahun = $_POST['tahun'];
     $nama_pemesan = $_POST['nama_pemesan'];
     $produk = $_POST['produk'];
     $jumlah = $_POST['jumlah'];
 
 
-    $sql = "INSERT INTO permintaan(bulan, tahun, nama_pemesan, produk, jumlah) VALUES ('$bulan', '$tahun', '$nama_pemesan','$produk','$jumlah')";
+    $sql = "INSERT INTO permintaan(semester, tahun, nama_pemesan, produk, jumlah) VALUES ('$semester', '$tahun', '$nama_pemesan','$produk','$jumlah')";
     $result = $conn->query($sql);
 
     if ($result) {

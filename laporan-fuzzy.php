@@ -50,8 +50,6 @@ if($_SESSION['status']!="loggedin"){
      					<table id="table" class="w-100">
      						<thead>
      							<tr>
-     								<th>Bulan</th>
-                    <th>Tahun</th>
      								<th>Prediksi</th>
                     <th></th>
      							</tr>
@@ -59,8 +57,6 @@ if($_SESSION['status']!="loggedin"){
      						<tbody>
                   <?php while($data = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                      <td><?php echo $data['bulan']; ?></td>
-    									<td><?php echo $data['tahun']; ?></td>
     									<td><?php echo $data['prediksi']; ?> kg</td>
                       <td class="text-center">
     										<a class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editUser<?php echo $user['id'];?>"><i class="fa-solid fa-edit"></i></a>

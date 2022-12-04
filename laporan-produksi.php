@@ -53,7 +53,7 @@ if($_SESSION['status']!="loggedin"){
      						<thead>
      							<tr>
      								<th>ID</th>
-                    <th>Bulan</th>
+                    <th>Semester</th>
                     <th>Tahun</th>
      								<th>Produk</th>
                     <th>Jumlah</th>
@@ -64,7 +64,7 @@ if($_SESSION['status']!="loggedin"){
                   <?php while($produksi = mysqli_fetch_assoc($result)) { ?>
                     <tr>
                       <td><?php echo $produksi['id']; ?></td>
-                      <td><?php echo $produksi['bulan']; ?></td>
+                      <td><?php echo $produksi['semester']; ?></td>
                       <td><?php echo $produksi['tahun']; ?></td>
     									<td><?php echo $produksi['produk']; ?></td>
     									<td><?php echo $produksi['jumlah']; ?> kg</td>
