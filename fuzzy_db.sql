@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2022 at 12:57 PM
+-- Generation Time: Dec 04, 2022 at 01:37 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -29,8 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `laporanprediksi` (
   `id` int(11) NOT NULL,
-  `bulan` varchar(255) NOT NULL,
-  `tahun` int(255) NOT NULL,
   `prediksi` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,10 +36,8 @@ CREATE TABLE `laporanprediksi` (
 -- Dumping data for table `laporanprediksi`
 --
 
-INSERT INTO `laporanprediksi` (`id`, `bulan`, `tahun`, `prediksi`) VALUES
-(1, 'November', 2022, 4373),
-(2, 'November', 2022, 4373),
-(3, 'November', 2022, 4373);
+INSERT INTO `laporanprediksi` (`id`, `prediksi`) VALUES
+(6, 17587);
 
 -- --------------------------------------------------------
 
@@ -51,8 +47,8 @@ INSERT INTO `laporanprediksi` (`id`, `bulan`, `tahun`, `prediksi`) VALUES
 
 CREATE TABLE `permintaan` (
   `id` int(11) NOT NULL,
-  `bulan` enum('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember') NOT NULL,
-  `tahun` enum('2020','2021','2022','2023','2024') NOT NULL,
+  `semester` enum('1','2') NOT NULL,
+  `tahun` int(255) NOT NULL,
   `nama_pemesan` varchar(255) NOT NULL,
   `produk` varchar(255) NOT NULL,
   `jumlah` int(10) NOT NULL
@@ -62,9 +58,17 @@ CREATE TABLE `permintaan` (
 -- Dumping data for table `permintaan`
 --
 
-INSERT INTO `permintaan` (`id`, `bulan`, `tahun`, `nama_pemesan`, `produk`, `jumlah`) VALUES
-(14, 'November', '2022', 'jane', 'kecil', 5204),
-(15, 'November', '2022', 'jone', 'kecil', 3196);
+INSERT INTO `permintaan` (`id`, `semester`, `tahun`, `nama_pemesan`, `produk`, `jumlah`) VALUES
+(18, '1', 2018, 'test', 'kecil', 17750),
+(19, '2', 2018, 'test', 'kecil', 18857),
+(20, '1', 2019, 'test', 'besar', 18600),
+(21, '2', 2019, 'test', 'besar', 19490),
+(22, '1', 2020, 'test', 'kecil', 19200),
+(23, '2', 2020, 'test', 'kecil', 19000),
+(24, '1', 2021, 'test', 'besar', 18650),
+(25, '2', 2021, 'TEST', 'besar', 18500),
+(26, '1', 2022, 'test', 'kecil', 19700),
+(27, '2', 2022, 'test', 'kecil', 18700);
 
 -- --------------------------------------------------------
 
@@ -74,8 +78,8 @@ INSERT INTO `permintaan` (`id`, `bulan`, `tahun`, `nama_pemesan`, `produk`, `jum
 
 CREATE TABLE `persediaan` (
   `id` int(11) NOT NULL,
-  `bulan` enum('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember') NOT NULL,
-  `tahun` enum('2020','2021','2022','2023','2024') NOT NULL,
+  `semester` enum('1','2') NOT NULL,
+  `tahun` int(255) NOT NULL,
   `nama_pemesan` varchar(255) NOT NULL,
   `produk` varchar(255) NOT NULL,
   `jumlah` int(255) NOT NULL
@@ -85,9 +89,17 @@ CREATE TABLE `persediaan` (
 -- Dumping data for table `persediaan`
 --
 
-INSERT INTO `persediaan` (`id`, `bulan`, `tahun`, `nama_pemesan`, `produk`, `jumlah`) VALUES
-(11, 'November', '2022', 'jaen', 'kecil', 452),
-(12, 'November', '2022', 'test', 'kecil', 198);
+INSERT INTO `persediaan` (`id`, `semester`, `tahun`, `nama_pemesan`, `produk`, `jumlah`) VALUES
+(15, '1', 2018, 'test', 'besar', 9800),
+(16, '2', 2018, 'test', 'besar', 10350),
+(17, '1', 2019, 'test', 'besar', 7200),
+(18, '2', 2019, 'test', 'kecil', 8000),
+(19, '1', 2020, 'test', 'besar', 6800),
+(20, '2', 2020, 'test', 'kecil', 7200),
+(21, '1', 2021, 'test', 'kecil', 7700),
+(22, '2', 2021, 'test', 'kecil', 6300),
+(23, '1', 2022, 'test', 'kecil', 6360),
+(24, '2', 2022, 'test', 'kecil', 6000);
 
 -- --------------------------------------------------------
 
@@ -97,8 +109,6 @@ INSERT INTO `persediaan` (`id`, `bulan`, `tahun`, `nama_pemesan`, `produk`, `jum
 
 CREATE TABLE `prediksi` (
   `id` int(11) NOT NULL,
-  `bulan` varchar(255) NOT NULL,
-  `tahun` int(255) NOT NULL,
   `sediaMax` int(255) NOT NULL,
   `sediaMin` int(255) NOT NULL,
   `mintaMax` int(255) NOT NULL,
@@ -113,11 +123,8 @@ CREATE TABLE `prediksi` (
 -- Dumping data for table `prediksi`
 --
 
-INSERT INTO `prediksi` (`id`, `bulan`, `tahun`, `sediaMax`, `sediaMin`, `mintaMax`, `mintaMin`, `prodMax`, `prodMin`, `mintaSkr`, `sediaSkr`) VALUES
-(14, 'November', 2022, 452, 198, 5204, 3196, 5570, 3400, 4017, 353),
-(15, 'November', 2022, 452, 198, 5204, 3196, 5570, 3400, 4017, 353),
-(16, 'November', 2022, 452, 198, 5204, 3196, 5570, 3400, 4017, 353),
-(17, 'November', 2022, 452, 198, 5204, 3196, 5570, 3400, 4017, 353);
+INSERT INTO `prediksi` (`id`, `sediaMax`, `sediaMin`, `mintaMax`, `mintaMin`, `prodMax`, `prodMin`, `mintaSkr`, `sediaSkr`) VALUES
+(37, 10350, 6000, 19700, 17750, 19930, 18570, 18000, 7000);
 
 -- --------------------------------------------------------
 
@@ -127,19 +134,27 @@ INSERT INTO `prediksi` (`id`, `bulan`, `tahun`, `sediaMax`, `sediaMin`, `mintaMa
 
 CREATE TABLE `produksi` (
   `id` int(11) NOT NULL,
-  `bulan` enum('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember') NOT NULL,
-  `tahun` enum('2020','2021','2022','2023','2024') NOT NULL,
+  `semester` enum('1','2') NOT NULL,
+  `tahun` int(255) NOT NULL,
   `produk` varchar(255) NOT NULL,
-  `jumlah` int(255) NOT NULL
+  `jumlah` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `produksi`
 --
 
-INSERT INTO `produksi` (`id`, `bulan`, `tahun`, `produk`, `jumlah`) VALUES
-(6, 'November', '2022', 'besar', 5570),
-(7, 'November', '2022', 'besar', 3400);
+INSERT INTO `produksi` (`id`, `semester`, `tahun`, `produk`, `jumlah`) VALUES
+(20, '1', 2018, 'kecil', 19700),
+(22, '2', 2018, 'besar', 19250),
+(23, '1', 2019, 'kecil', 19930),
+(24, '2', 2019, 'kecil', 18820),
+(25, '1', 2020, 'kecil', 19900),
+(26, '2', 2020, 'kecil', 19340),
+(27, '1', 2021, 'kecil', 18920),
+(28, '2', 2021, 'kecil', 19800),
+(29, '1', 2022, 'besar', 19800),
+(30, '2', 2022, 'kecil', 18570);
 
 -- --------------------------------------------------------
 
@@ -160,8 +175,6 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `level`) VALUES
-(1, 'Aditya Suryana', 'adityasuryana', 'letmein', 'admin'),
-(2, 'John Doe', 'johndoe', 'letmein', 'owner'),
 (3, 'admin', 'admin', 'letmein', 'admin'),
 (4, 'owner', 'owner', 'letmein', 'owner');
 
@@ -213,37 +226,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `laporanprediksi`
 --
 ALTER TABLE `laporanprediksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permintaan`
 --
 ALTER TABLE `permintaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `persediaan`
 --
 ALTER TABLE `persediaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `prediksi`
 --
 ALTER TABLE `prediksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
