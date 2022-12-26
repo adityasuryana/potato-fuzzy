@@ -52,7 +52,6 @@ if($_SESSION['status']!="loggedin"){
      					<table id="table" class="w-100">
      						<thead>
      							<tr>
-     								<th>ID</th>
                     <th>Semester</th>
                     <th>Tahun</th>
      								<th>Nama Pemesan</th>
@@ -64,7 +63,6 @@ if($_SESSION['status']!="loggedin"){
      						<tbody>
                   <?php while($persediaan = mysqli_fetch_assoc($result)) { ?>
                     <tr>
-                      <td><?php echo $persediaan['id']; ?></td>
                       <td><?php echo $persediaan['semester']; ?></td>
                       <td><?php echo $persediaan['tahun']; ?></td>
     									<td><?php echo $persediaan['nama_pemesan']; ?></td>
