@@ -54,25 +54,25 @@ if($_SESSION['status']!="loggedin"){
 
            <div class="table-data">
              <?php
-               $permintaanTurun = ($data_prediksi["mintaMax"] - $data_prediksi["mintaSkr"])/($data_prediksi["mintaMax"] - $data_prediksi["mintaMin"]);
-               $permintaanNaik = ($data_prediksi["mintaSkr"] - $data_prediksi["mintaMin"])/($data_prediksi["mintaMax"] - $data_prediksi["mintaMin"]);
-               $persediaanSedikit = ($data_prediksi["sediaMax"] - $data_prediksi["sediaSkr"])/($data_prediksi["sediaMax"] - $data_prediksi["sediaMin"]);
-               $persediaanBanyak = ($data_prediksi["mintaSkr"] - $data_prediksi["sediaMin"])/($data_prediksi["sediaMax"] - $data_prediksi["sediaMin"]);
+               $permintaanTurun = round(($data_prediksi["mintaMax"] - $data_prediksi["mintaSkr"])/($data_prediksi["mintaMax"] - $data_prediksi["mintaMin"]));
+               $permintaanNaik = round(($data_prediksi["mintaSkr"] - $data_prediksi["mintaMin"])/($data_prediksi["mintaMax"] - $data_prediksi["mintaMin"]));
+               $persediaanSedikit = round(($data_prediksi["sediaMax"] - $data_prediksi["sediaSkr"])/($data_prediksi["sediaMax"] - $data_prediksi["sediaMin"]));
+               $persediaanBanyak = round(($data_prediksi["mintaSkr"] - $data_prediksi["sediaMin"])/($data_prediksi["sediaMax"] - $data_prediksi["sediaMin"]));
 
                $a_pred1 = MIN($permintaanTurun, $persediaanBanyak);
-               $z1 = $data_prediksi["prodMax"] - $a_pred1 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]);
+               $z1 = round($data_prediksi["prodMax"] - $a_pred1 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]));
 
                $a_pred2 = MIN($permintaanTurun, $persediaanSedikit);
-               $z2 = $data_prediksi["prodMax"] - $a_pred2 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]);
+               $z2 = round($data_prediksi["prodMax"] - $a_pred2 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]));
 
                $a_pred3 = MIN($permintaanNaik, $persediaanBanyak);
-               $z3 = $a_pred3 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]) + $data_prediksi["prodMin"];
+               $z3 = round($a_pred3 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]) + $data_prediksi["prodMin"]);
 
                $a_pred4 = MIN($permintaanNaik, $persediaanSedikit);
-               $z4 = $a_pred4 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]) + $data_prediksi["prodMin"];
+               $z4 = round($a_pred4 * ($data_prediksi["prodMax"] - $data_prediksi["prodMin"]) + $data_prediksi["prodMin"]);
 
-               $n = $a_pred1 * $z1 + $a_pred2 * $z2 + $a_pred3 * $z3 + $a_pred4 * $z4;
-               $d =  $a_pred1 + $a_pred2 + $a_pred3 + $a_pred4;
+               $n = round(($a_pred1 * $z1) + ($a_pred2 * $z2) + ($a_pred3 * $z3) + ($a_pred4 * $z4));
+               $d =  round($a_pred1 + $a_pred2 + $a_pred3 + $a_pred4);
                $zhasil = $n/$d;
               ?>
 
@@ -86,7 +86,7 @@ if($_SESSION['status']!="loggedin"){
        						</thead>
        						<tbody>
                       <tr>
-      									<td><input type="text" name="prediksi" value="<?php echo round($zhasil); ?>"> kg</td>
+      									<td><input type="text" name="prediksi" value="<?php echo round($z3); ?>"> kg</td>
       								</tr>
        						</tbody>
        					</table>

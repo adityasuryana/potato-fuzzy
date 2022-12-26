@@ -40,7 +40,7 @@ if (!isset($_SESSION['level'])){
        </div>
      </nav>
 
-     <div class="container">
+     <div class="container mb-4" >
        <div class="row">
 
          <div class="col-12">
@@ -49,7 +49,7 @@ if (!isset($_SESSION['level'])){
              <h2 class="header-title">Prediksi</h2>
            </div>
 
-           <form action="process/prediksi/insert_prediksi.php" method="post">
+           <form class="mb-4" action="process/prediksi/insert_prediksi.php" method="POST" name="tabel">
              <table id="table" class="mt-4">
                <thead>
                  <tr>
@@ -67,10 +67,9 @@ if (!isset($_SESSION['level'])){
                     ?>
                   <tr>
                    <th>Persediaan</th>
-                   <td class="text-end"><input class="text-end" type="number" name="sediaMax" value="<?php echo $data_sedia["max_jumlah"]; ?>" > kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="sediaMin" value="<?php echo $data_sedia["min_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="sediaMax" value="<?php echo $data_sedia["max_jumlah"]; ?>" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="sediaMin" value="<?php echo $data_sedia["min_jumlah"]; ?>" readonly> kg</td>
                  </tr>
-
 
                    <?php
                       $no = 1;
@@ -79,8 +78,8 @@ if (!isset($_SESSION['level'])){
                     ?>
                   <tr>
                    <th>Permintaan</th>
-                   <td class="text-end"><input class="text-end" type="number" name="mintaMax" value="<?php echo $data_minta["max_jumlah"]; ?>" > kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="mintaMin" value="<?php echo $data_minta["min_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="mintaMax" value="<?php echo $data_minta["max_jumlah"]; ?>" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="mintaMin" value="<?php echo $data_minta["min_jumlah"]; ?>" readonly> kg</td>
                  </tr>
 
                  <tr>
@@ -90,9 +89,8 @@ if (!isset($_SESSION['level'])){
                       $data_produksi = mysqli_fetch_array($produksi)
                     ?>
                    <th>Produksi</th>
-                   <td class="text-end"><input class="text-end" type="number" name="prodMax" value="<?php echo $data_produksi["max_jumlah"]; ?>" > kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="prodMin" value="<?php echo $data_produksi["min_jumlah"]; ?>" > kg</td>
-
+                   <td class="text-end"><input class="text-end" type="number" name="prodMax" value="<?php echo $data_produksi["max_jumlah"]; ?>" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="prodMin" value="<?php echo $data_produksi["min_jumlah"]; ?>" readonly> kg</td>
                  </tr>
 
                  <tr>
@@ -109,12 +107,21 @@ if (!isset($_SESSION['level'])){
                    <td class="text-end"><input class="text-end" type="number" name="sediaSkr"> kg</td>
                  </tr>
 
-               </tbody>
+                 <tr>
+                   <td colspan="3"><hr></td>
+                 </tr>
 
+                 <tr>
+                   <th><label for="">Prediksi semester ini</label></th>
+                   <td class="text-end"><input class="text-end" type="number" value="" name="prediksiSkr" readonly> kg</td>
+                 </tr>
+
+               </tbody>
              </table>
 
            <div class="form-row float-start">
-             <button type="submit" name="button">Hitung</button>
+             <button class="me-3" type="button" value="send" name="button" onclick="hitung()">Hitung</button>
+             <button type="submit">Simpan</button>
            </div>
            </form>
 
@@ -123,6 +130,42 @@ if (!isset($_SESSION['level'])){
      </div>
 
      <script type="text/javascript" src="js/jquery.js"></script>
+     <script>
+       function hitung() {
+         var sediaMax = (document.tabel.sediaMax.value);
+         var sediaMin = (document.tabel.sediaMin.value);
+         var mintaMax = (document.tabel.mintaMax.value);
+         var mintaMin = (document.tabel.mintaMin.value);
+         var prodMax = (document.tabel.prodMax.value);
+         var prodMin = (document.tabel.prodMin.value);
+         var mintaSkr = (document.tabel.mintaSkr.value);
+         var sediaSkr = (document.tabel.sediaSkr.value);
+
+         var permintaanTurun = Math.round((mintaMax - mintaSkr) / (mintaMax - mintaMin));
+         var permintaanNaik = Math.round((mintaSkr - mintaMin) / (mintaMax - mintaMin));
+         var persediaanSedikit = Math.round((sediaMax - sediaSkr) / (sediaMax - sediaMin));
+         var persediaanBanyak = Math.round((mintaSkr - sediaMin) / (sediaMax - sediaMin));
+
+         var pred1 = Math.min(permintaanTurun, persediaanBanyak);
+         var z1 = Math.round(prodMax - pred1 * (prodMax - prodMin));
+
+         var pred2 = Math.min(permintaanTurun, persediaanSedikit);
+         var z2 = Math.round(prodMax - pred2 * (prodMax - prodMin));
+
+         var pred3 = Math.min(permintaanNaik, persediaanBanyak);
+         var z3 = Math.round(pred3 * (prodMax - prodMin) + prodMin);
+
+         var pred4 = Math.min(permintaanNaik, persediaanSedikit);
+         var z4 = Math.round(pred4 * (prodMax - prodMin) + prodMin);
+
+         var n = Math.round((pred1 * z1) + (pred2 * z2) + (pred3 * z3) + (pred4 * z4));
+         var d = Math.round(pred1 + pred2 + pred3 + pred4);
+
+         var zhasil = Math.round(n/d);
+
+         document.tabel.prediksiSkr.value = z3;
+       }
+     </script>
      <script type="text/javascript">
    			$(document).ready( function () {
    			$('#table').DataTable({
