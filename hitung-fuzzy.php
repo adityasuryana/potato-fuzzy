@@ -67,8 +67,8 @@ if (!isset($_SESSION['level'])){
                     ?>
                   <tr>
                    <th>Persediaan</th>
-                   <td class="text-end"><input class="text-end" type="number" name="sediaMax" value="<?php echo $data_sedia["max_jumlah"]; ?>" readonly> kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="sediaMin" value="<?php echo $data_sedia["min_jumlah"]; ?>" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="sediaMax" value="<?php echo $data_sedia["max_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="sediaMin" value="<?php echo $data_sedia["min_jumlah"]; ?>" > kg</td>
                  </tr>
 
                    <?php
@@ -78,8 +78,8 @@ if (!isset($_SESSION['level'])){
                     ?>
                   <tr>
                    <th>Permintaan</th>
-                   <td class="text-end"><input class="text-end" type="number" name="mintaMax" value="<?php echo $data_minta["max_jumlah"]; ?>" readonly> kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="mintaMin" value="<?php echo $data_minta["min_jumlah"]; ?>" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="mintaMax" value="<?php echo $data_minta["max_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="mintaMin" value="<?php echo $data_minta["min_jumlah"]; ?>" > kg</td>
                  </tr>
 
                  <tr>
@@ -89,8 +89,8 @@ if (!isset($_SESSION['level'])){
                       $data_produksi = mysqli_fetch_array($produksi)
                     ?>
                    <th>Produksi</th>
-                   <td class="text-end"><input class="text-end" type="number" name="prodMax" value="<?php echo $data_produksi["max_jumlah"]; ?>" readonly> kg</td>
-                   <td class="text-end"><input class="text-end" type="number" name="prodMin" value="<?php echo $data_produksi["min_jumlah"]; ?>" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="prodMax" value="<?php echo $data_produksi["max_jumlah"]; ?>" > kg</td>
+                   <td class="text-end"><input class="text-end" type="number" name="prodMin" value="<?php echo $data_produksi["min_jumlah"]; ?>" > kg</td>
                  </tr>
 
                  <tr>
@@ -113,16 +113,15 @@ if (!isset($_SESSION['level'])){
 
                  <tr>
                    <th><label for="">Prediksi semester ini</label></th>
-                   <td class="text-end"><input class="text-end" type="number" value="" name="prediksiSkr" readonly> kg</td>
+                   <td class="text-end"><input class="text-end" value="" name="prediksiSkr" > kg</td>
                  </tr>
 
                </tbody>
              </table>
-
-           <div class="form-row float-start">
-             <button class="me-3" type="button" value="send" name="button" onclick="hitung()">Hitung</button>
-             <button class="form-btn" type="submit">Simpan</button>
-           </div>
+             <div class="form-row float-start">
+               <button class="me-3" type="button" value="send" name="button" onclick="hitung()">Hitung</button>
+               <button class="form-btn" type="submit">Simpan</button>
+             </div>
            </form>
 
          </div>
@@ -132,36 +131,37 @@ if (!isset($_SESSION['level'])){
      <script type="text/javascript" src="js/jquery.js"></script>
      <script>
        function hitung() {
-         var sediaMax = (document.tabel.sediaMax.value);
-         var sediaMin = (document.tabel.sediaMin.value);
-         var mintaMax = (document.tabel.mintaMax.value);
-         var mintaMin = (document.tabel.mintaMin.value);
-         var prodMax = parseInt(document.tabel.prodMax.value);
-         var prodMin = parseInt(document.tabel.prodMin.value);
+         var sediaMax = parseFloat(document.tabel.sediaMax.value);
+         var sediaMin = parseFloat(document.tabel.sediaMin.value);
+         var mintaMax = parseFloat(document.tabel.mintaMax.value);
+         var mintaMin = parseFloat(document.tabel.mintaMin.value);
+         var prodMax = parseFloat(document.tabel.prodMax.value);
+         var prodMin = parseFloat(document.tabel.prodMin.value);
          var mintaSkr = (document.tabel.mintaSkr.value);
          var sediaSkr = (document.tabel.sediaSkr.value);
 
-         var permintaanTurun = Math.round((mintaMax - mintaSkr) / (mintaMax - mintaMin));
-         var permintaanNaik = Math.round((mintaSkr - mintaMin) / (mintaMax - mintaMin));
-         var persediaanSedikit = Math.round((sediaMax - sediaSkr) / (sediaMax - sediaMin));
-         var persediaanBanyak = Math.round((mintaSkr - sediaMin) / (sediaMax - sediaMin));
+         var permintaanTurun = (mintaMax - mintaSkr) / (mintaMax - mintaMin);
+         var permintaanNaik = (mintaSkr - mintaMin) / (mintaMax - mintaMin);
+         var persediaanSedikit = (sediaMax - sediaSkr) / (sediaMax - sediaMin);
+         var persediaanBanyak = (sediaSkr - sediaMin) / (sediaMax - sediaMin);
 
          var pred1 = Math.min(permintaanTurun, persediaanBanyak);
-         var z1 = Math.round(prodMax - pred1 * (prodMax - prodMin));
+         var z1 = prodMax - ((prodMax - prodMin) * pred1);
 
          var pred2 = Math.min(permintaanTurun, persediaanSedikit);
-         var z2 = Math.round(prodMax - pred2 * (prodMax - prodMin));
+         var z2 = prodMax - ((prodMax - prodMin) * pred2);
 
          var pred3 = Math.min(permintaanNaik, persediaanBanyak);
-         var z3 = Math.round(pred3 * (prodMax - prodMin)) + prodMin;
+         var z3 =  prodMin + ((prodMax - prodMin) * pred3);
 
          var pred4 = Math.min(permintaanNaik, persediaanSedikit);
-         var z4 = Math.round(pred4 * (prodMax - prodMin) + prodMin);
+         var z4 = prodMin + ((prodMax - prodMin) * pred4);
 
-         var n = Math.round((pred1 * z1) + (pred2 * z2) + (pred3 * z3) + (pred4 * z4));
-         var d = Math.round(pred1 + pred2 + pred3 + pred4);
+         var n = (pred1 * z1) + (pred2 * z2) + (pred3 * z3) + (pred4 * z4);
+         var d = pred1 + pred2 + pred3 + pred4;
 
          var zhasil = Math.round(n/d);
+
 
          document.tabel.prediksiSkr.value = zhasil;
        }
