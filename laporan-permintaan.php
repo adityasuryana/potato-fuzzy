@@ -68,10 +68,57 @@ if($_SESSION['status']!="loggedin"){
     									<td><?php echo $permintaan['produk']; ?></td>
     									<td><?php echo $permintaan['jumlah']; ?> kg</td>
                       <td class="text-center">
-    										<a class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editUser<?php echo $user['id'];?>"><i class="fa-solid fa-edit"></i></a>
+    										<a class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editPermintaan<?php echo $permintaan['id'];?>"><i class="fa-solid fa-edit"></i></a>
     										<a class="btn btn-danger" href="process/permintaan/delete_permintaan.php?id=<?php echo $permintaan['id']; ?>"><i class="fa-solid fa-trash"></i></a>
     									</td>
     								</tr>
+
+                    <div class="modal fade" id="editPermintaan<?php echo $permintaan['id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content" style="border: none; border-radius: 20px;">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Edit Persediaan</h5>
+                          </div>
+                          <div class="modal-body">
+                            <form method="POST" action="process/permintaan/update_permintaan.php">
+                              <div class="">
+                                <input type="hidden" value="<?php echo $permintaan['id']; ?>" name="id">
+                              </div>
+                              <div class="mb-3">
+                                <label for="semester" class="form-label">Semester</label>
+                                <select class="w-100" name="semester">
+                                  <option value="<?php echo $permintaan['semester']; ?>"><?php echo $permintaan['semester']; ?></option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="tahun" class="form-label">Tahun</label>
+                                <input type="text" name="tahun" class="form-control" id="tahun" value="<?php echo $permintaan['tahun']; ?>" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="nama_pemesan" class="form-label">Nama Pemesan</label>
+                                <input type="text" name="nama_pemesan" class="form-control" id="nama_pemesan" value="<?php echo $permintaan['nama_pemesan']; ?>" required>
+                              </div>
+                              <div class="mb-3">
+                                <label for="barang">Barang</label>
+                                <select class="w-100" name="produk">
+                                  <option value="<?php echo $permintaan['produk']; ?>"><?php echo $permintaan['produk']; ?></option>
+                                  <option value="besar">Besar</option>
+                                  <option value="kecil">Kecil</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="jumlah" class="form-label">Quantity</label>
+                                <input type="text" name="jumlah" class="form-control" id="jumlah" value="<?php echo $permintaan['jumlah']; ?>" required>
+                              </div>
+                              <button type="button" class="btn text-danger" data-bs-dismiss="modal">Batal</button>
+                              <button type="submit" id="submit" class="btn btn-dark float-end">Edit</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <?php } ?>
      						</tbody>
      					</table>

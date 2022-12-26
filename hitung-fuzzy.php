@@ -14,7 +14,7 @@ if (!isset($_SESSION['level'])){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hitung Logika Fuzzy | Admin</title>
+    <title>Hitung Logika Fuzzy</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
@@ -53,7 +53,7 @@ if (!isset($_SESSION['level'])){
              <table id="table" class="mt-4">
                <thead>
                  <tr>
-                  <th class="">Variabel</th>
+                  <th class="">variabel</th>
                   <th class="text-center">Tertinggi</th>
                   <th class="text-center">Terendah</th>
                 </tr>
@@ -121,7 +121,7 @@ if (!isset($_SESSION['level'])){
 
            <div class="form-row float-start">
              <button class="me-3" type="button" value="send" name="button" onclick="hitung()">Hitung</button>
-             <button type="submit">Simpan</button>
+             <button class="form-btn" type="submit">Simpan</button>
            </div>
            </form>
 
@@ -136,8 +136,8 @@ if (!isset($_SESSION['level'])){
          var sediaMin = (document.tabel.sediaMin.value);
          var mintaMax = (document.tabel.mintaMax.value);
          var mintaMin = (document.tabel.mintaMin.value);
-         var prodMax = (document.tabel.prodMax.value);
-         var prodMin = (document.tabel.prodMin.value);
+         var prodMax = parseInt(document.tabel.prodMax.value);
+         var prodMin = parseInt(document.tabel.prodMin.value);
          var mintaSkr = (document.tabel.mintaSkr.value);
          var sediaSkr = (document.tabel.sediaSkr.value);
 
@@ -153,7 +153,7 @@ if (!isset($_SESSION['level'])){
          var z2 = Math.round(prodMax - pred2 * (prodMax - prodMin));
 
          var pred3 = Math.min(permintaanNaik, persediaanBanyak);
-         var z3 = Math.round(pred3 * (prodMax - prodMin) + prodMin);
+         var z3 = Math.round(pred3 * (prodMax - prodMin)) + prodMin;
 
          var pred4 = Math.min(permintaanNaik, persediaanSedikit);
          var z4 = Math.round(pred4 * (prodMax - prodMin) + prodMin);
@@ -163,7 +163,7 @@ if (!isset($_SESSION['level'])){
 
          var zhasil = Math.round(n/d);
 
-         document.tabel.prediksiSkr.value = z3;
+         document.tabel.prediksiSkr.value = zhasil;
        }
      </script>
      <script type="text/javascript">

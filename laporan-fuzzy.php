@@ -21,7 +21,7 @@ if($_SESSION['status']!="loggedin"){
   <body>
     <?php
   		require_once('connection.php');
-  		$sql = "SELECT * FROM laporanPrediksi";
+  		$sql = "SELECT * FROM prediksi";
   		$result = mysqli_query($conn, $sql);
   	?>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -59,8 +59,7 @@ if($_SESSION['status']!="loggedin"){
                     <tr>
     									<td><?php echo $data['prediksi']; ?> kg</td>
                       <td class="text-center">
-    										<a class="btn btn-edit me-2" data-bs-toggle="modal" data-bs-target="#editUser<?php echo $user['id'];?>"><i class="fa-solid fa-edit"></i></a>
-    										<a class="btn btn-danger" href="process/laporanPrediksi/delete_laporanPrediksi.php?id=<?php echo $data['id']; ?>"><i class="fa-solid fa-trash"></i></a>
+    										<a class="btn btn-danger" href="process/prediksi/delete_prediksi.php?id=<?php echo $data['id']; ?>"><i class="fa-solid fa-trash"></i></a>
     									</td>
     								</tr>
                     <?php } ?>
