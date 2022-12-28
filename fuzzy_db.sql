@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2022 at 01:37 PM
+-- Generation Time: Dec 27, 2022 at 06:39 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,24 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `fuzzy_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `laporanprediksi`
---
-
-CREATE TABLE `laporanprediksi` (
-  `id` int(11) NOT NULL,
-  `prediksi` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `laporanprediksi`
---
-
-INSERT INTO `laporanprediksi` (`id`, `prediksi`) VALUES
-(6, 17587);
 
 -- --------------------------------------------------------
 
@@ -90,7 +72,7 @@ CREATE TABLE `persediaan` (
 --
 
 INSERT INTO `persediaan` (`id`, `semester`, `tahun`, `nama_pemesan`, `produk`, `jumlah`) VALUES
-(15, '1', 2018, 'test', 'besar', 9800),
+(15, '1', 2018, 'test', 'kecil', 9800),
 (16, '2', 2018, 'test', 'besar', 10350),
 (17, '1', 2019, 'test', 'besar', 7200),
 (18, '2', 2019, 'test', 'kecil', 8000),
@@ -109,22 +91,15 @@ INSERT INTO `persediaan` (`id`, `semester`, `tahun`, `nama_pemesan`, `produk`, `
 
 CREATE TABLE `prediksi` (
   `id` int(11) NOT NULL,
-  `sediaMax` int(255) NOT NULL,
-  `sediaMin` int(255) NOT NULL,
-  `mintaMax` int(255) NOT NULL,
-  `mintaMin` int(255) NOT NULL,
-  `prodMax` int(255) NOT NULL,
-  `prodMin` int(255) NOT NULL,
-  `mintaSkr` int(255) NOT NULL,
-  `sediaSkr` int(255) NOT NULL
+  `prediksi` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `prediksi`
 --
 
-INSERT INTO `prediksi` (`id`, `sediaMax`, `sediaMin`, `mintaMax`, `mintaMin`, `prodMax`, `prodMin`, `mintaSkr`, `sediaSkr`) VALUES
-(37, 10350, 6000, 19700, 17750, 19930, 18570, 18000, 7000);
+INSERT INTO `prediksi` (`id`, `prediksi`) VALUES
+(93, 18989);
 
 -- --------------------------------------------------------
 
@@ -137,7 +112,7 @@ CREATE TABLE `produksi` (
   `semester` enum('1','2') NOT NULL,
   `tahun` int(255) NOT NULL,
   `produk` varchar(255) NOT NULL,
-  `jumlah` int(10) NOT NULL
+  `jumlah` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -183,12 +158,6 @@ INSERT INTO `user` (`id`, `name`, `username`, `password`, `level`) VALUES
 --
 
 --
--- Indexes for table `laporanprediksi`
---
-ALTER TABLE `laporanprediksi`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `permintaan`
 --
 ALTER TABLE `permintaan`
@@ -223,12 +192,6 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `laporanprediksi`
---
-ALTER TABLE `laporanprediksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `permintaan`
 --
 ALTER TABLE `permintaan`
@@ -244,7 +207,7 @@ ALTER TABLE `persediaan`
 -- AUTO_INCREMENT for table `prediksi`
 --
 ALTER TABLE `prediksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `produksi`
