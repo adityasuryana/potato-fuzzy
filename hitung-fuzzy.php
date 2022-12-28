@@ -162,7 +162,6 @@ if (!isset($_SESSION['level'])){
 
          var zhasil = Math.round(n/d);
 
-
          document.tabel.prediksiSkr.value = zhasil;
        }
      </script>
